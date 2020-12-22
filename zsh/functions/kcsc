@@ -1,0 +1,9 @@
+function kcsc
+{
+  local context=${1}
+  if [[ -z "$context" ]]; then
+    kubectl config get-contexts
+  else
+    kubectl config use-context ${context}
+  fi
+}

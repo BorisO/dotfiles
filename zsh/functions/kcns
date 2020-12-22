@@ -1,0 +1,12 @@
+# Quickly display / switch kubernetes namespaces
+function kcns
+{
+  local namespace=${1}
+  if [[ -z "$namespace" ]]; then
+    kubectl get ns
+  else
+    local context=$(kubectl config current-context)
+    echo "Setting context ${context} to namespace ${namespace}..."
+    kubectl config set-context ${context} --namespace ${namespace}
+  fi
+}

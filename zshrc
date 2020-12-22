@@ -39,3 +39,14 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# Bash completions
+autoload -U bashcompinit && bashcompinit
+for function in ~/.zsh/bash_completions/*; do
+  source $function
+done
+
+# Terraform completions
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

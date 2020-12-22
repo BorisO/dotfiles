@@ -1,0 +1,14 @@
+# $1 == new keyword when creating a new virtualenv
+# $2 == python version to use for virtualenv
+function pyvenv() {
+  if [ "$1" = "new" ]; then
+    if [ "$2" = "python3" ]; then
+      python3 -m venv venv
+    fi
+
+    if [ "$2" = "python2" ]; then
+      virtualenv venv
+    fi
+  fi
+  source venv/bin/activate
+}

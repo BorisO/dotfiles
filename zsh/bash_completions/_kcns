@@ -1,0 +1,9 @@
+function _kcns {
+    local word=${COMP_WORDS[COMP_CWORD]}
+    local list=$(kubectl get ns --no-headers | awk '{print $1}')
+    list=$(compgen -W "$list" -- "$word")
+    COMPREPLY=($list)
+    return 0
+}
+
+complete -F _kcns kcns

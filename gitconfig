@@ -13,6 +13,8 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  p  = pull
+  l  = log
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -28,3 +30,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+	name = Boris Onufriyev
+	email = bonufriyev@2u.com

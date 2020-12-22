@@ -1,0 +1,7 @@
+function ad-get-users-groups
+{
+  local user=${1:?"No Username Provided/"}
+  dscl '/Active Directory/2TOR/All Domains' read "/Users/${user}" dsAttrTypeNative:memberOf \
+    | (read -r; printf "%s\n" "$REPLY"; sort -f)
+}
+

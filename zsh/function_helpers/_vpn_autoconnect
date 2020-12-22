@@ -1,0 +1,19 @@
+#!/usr/bin/env expect -f
+set timeout -1
+set user $::env(USER)
+set pw [exec security find-generic-password -a $user -s vpn -w]
+spawn /opt/cisco/anyconnect/bin/vpn -s connect {it-inf-asav02-east-prod.2u.com}
+#expect "Group:"
+#send -- "2U_Corp_Split\r"
+expect "Username:"
+send -- "$user\r"
+expect "Password:"
+send -- "$pw\r"
+#expect "accept? \[y\n\]:"
+#send -- "y\r"
+expect "Answer:"
+expect_user -timeout 3600 -re "(.*)\[\r\n]"
+send "$expect_out(1,string)\r"
+expect "accept?"
+send -- "y\r"
+expect eof

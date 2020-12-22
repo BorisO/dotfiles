@@ -1,0 +1,6 @@
+function ad-get-group-members
+{
+  local group=${1:?"No Group Provided/"}
+  dscl '/Active Directory/2TOR/All Domains' read "/Groups/${group}" GroupMembership \
+    | (read -r; printf "%s\n" "$REPLY"; sort -f)
+}

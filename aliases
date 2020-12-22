@@ -19,3 +19,22 @@ alias path='echo $PATH | tr -s ":" "\n"'
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
 fi
+
+# Personal
+alias uuid="cat * | grep "uid" | awk '{print $3}' | sed 's/[^0-9]*//g' | sort -nr | head -n 2 | tail -n 1"
+alias currbranch="git rev-parse --abbrev-ref HEAD"
+alias helmdelete="helm delete --purge $(helm list | tail -n 1 | awk '{ print $1 }')"
+alias h="helm"
+alias g="git"
+alias k='kubectl'
+alias tf11="/usr/local/opt/terraform@0.11/bin/terraform"
+alias tf12="/usr/local/opt/terraform/bin/terraform"
+alias gpb='git push -u origin `currbranch`'
+alias gcm='git checkout master'
+alias gcb='f() { git checkout -b $1};f'
+alias cleardnscache='sudo killall -HUP mDNSResponder'
+alias clgrep="grep -Iir --exclude-dir='.[^.]*'"
+alias jenkinsvalidate="~/repos/ops-tools/jenkins-pipeline-validator/validate.sh"
+alias certinfo='f() { echo | openssl s_client -showcerts -servername $1 -connect $1:443 2>/dev/null | openssl x509 -inform pem -noout -text};f'
+alias restartsound='sudo launchctl stop com.apple.audio.coreaudiod && sudo launchctl start com.apple.audio.coreaudiod'
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
